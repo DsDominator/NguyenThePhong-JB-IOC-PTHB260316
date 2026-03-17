@@ -1,3 +1,4 @@
+
 CREATE DATABASE EcommerceDB;
 CREATE SCHEMA shop;
 CREATE TABLE shop.Users (
