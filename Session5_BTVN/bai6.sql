@@ -72,34 +72,12 @@ FROM projects p
 JOIN departments d ON p.dept_id = d.dept_id
 LEFT JOIN employees e ON d.dept_id = e.dept_id;
 
-SELECT 
-    e.emp_name,
-    e.salary,
-    d.dept_name
+SELECT *
 FROM employees e
-JOIN departments d ON e.dept_id = d.dept_id
-WHERE e.salary = (
-    SELECT MAX(e2.salary)
+WHERE (e.salary,e.dept_id) IN (
+    SELECT MAX(e2.salary), e2.dept_id
     FROM employees e2
-    WHERE e2.dept_id = e.dept_id
+    GROUP BY e2.dept_id
 );
 
-SELECT DISTINCT d.dept_name
-FROM departments d
-JOIN employees e ON d.dept_id = e.dept_id
 
-UNION
-
-SELECT DISTINCT d.dept_name
-FROM departments d
-JOIN projects p ON d.dept_id = p.dept_id;
-
-SELECT DISTINCT d.dept_name
-FROM departments d
-JOIN employees e ON d.dept_id = e.dept_id
-
-INTERSECT
-
-SELECT DISTINCT d.dept_name
-FROM departments d
-JOIN projects p ON d.dept_id = p.dept_id;

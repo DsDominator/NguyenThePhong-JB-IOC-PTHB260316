@@ -17,13 +17,6 @@ INSERT INTO books (title, author, category, publish_year, price, stock) VALUES
 ('Học máy cho người mới bắt đầu', 'Nguyễn Văn Nam', 'AI', 2023, 220000, 8),
 ('Khoa học dữ liệu cơ bản', 'Nguyễn Văn Nam', 'AI', 2023, 220000, NULL);
 
-DELETE FROM books a
-USING books b
-WHERE a.id > b.id
-AND a.title = b.title
-AND a.author = b.author
-AND a.publish_year = b.publish_year;
-
 UPDATE books
 SET price = price * 1.10
 WHERE publish_year >= 2021

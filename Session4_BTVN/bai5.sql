@@ -17,13 +17,6 @@ INSERT INTO employees (full_name, department, position, salary, bonus, join_year
 ('Bùi Thị Lan', 'HR', 'HR Manager', 20000000, 3000000, 2018),
 ('Đặng Hữu Tài', 'IT', 'Developer', 17000000, NULL, 2022);
 
-DELETE FROM employees a
-USING employees b
-WHERE a.id > b.id
-AND a.full_name = b.full_name
-AND a.department = b.department
-AND a.position = b.position;
-
 UPDATE employees
 SET salary = salary * 1.10
 WHERE department = 'IT'
